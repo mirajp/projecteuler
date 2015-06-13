@@ -10,12 +10,13 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
 
 
 #include <iostream>
-//#include "../lib/fibolib.h"
+#include "../lib/fibolib.h"
 #include <vector>
 #define MAX 4000000
 
 using namespace std;
 
+/*
 // Make a function that returns the fibonacci sequence ending at a term less than 
 vector<int> fiboMaxVal(int maxVal) {
 	vector<int> fibo;
@@ -33,6 +34,7 @@ vector<int> fiboMaxVal(int maxVal) {
 	
 	return fibo;
 }
+*/
 
 int main() {
 	int sum = 0;
