@@ -1,4 +1,4 @@
-all: p1.out p2.out p3.out
+all: p1.out p2.out p3.out p4.out
 
 p1.out: p1.o
 	g++ p1.o -o p1.out
@@ -23,6 +23,12 @@ p3.o: p3.cpp
 
 ../lib/prime.o: ../lib/prime.cpp
 	g++ -c ../lib/prime.cpp -o ../lib/prime.o
+
+p4:.out: p4.o
+	g++ p4.o -o p4.out
+
+p4.o: p4.cpp
+	g++ -c p4.cpp
 
 clean:
 	rm *.out *.o
