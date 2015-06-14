@@ -16,26 +16,6 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
 
 using namespace std;
 
-/*
-// Make a function that returns the fibonacci sequence ending at a term less than 
-vector<int> fiboMaxVal(int maxVal) {
-	vector<int> fibo;
-	if (maxVal < 1)
-		return fibo;
-	int fibterm = 1;
-	int prev = 1;
-	int temp;
-	while(fibterm <= maxVal) {
-		fibo.push_back(fibterm);
-		int temp = fibterm;
-		fibterm += prev;
-		prev = temp;
-	}
-	
-	return fibo;
-}
-*/
-
 int main() {
 	int sum = 0;
 	// Iterate through the returned list to sum the even terms
