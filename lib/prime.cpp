@@ -3,9 +3,11 @@
 // Set up an function to determine if input number is prime.
 bool isPrime(long long n) {
     if (n == 1)
+        return false;
+    else if (n == 2)
         return true;
     else {
-        for (long long i = 2; i < n; i++) {
+        for (long long i = 3; i < n; i+=2) {
             if (n%i == 0)
                 return false;
         }
@@ -17,7 +19,13 @@ bool isPrime(long long n) {
 std::vector<long> primeFactors(long long n) {
     std::vector<long> factors;
     long long quotient = n;
-    for(long long i = 2; i <= quotient; i++) {
+    
+    while(quotient%2 == 0) {
+        quotient /= 2;
+        factors.push_back(2);
+    }
+
+    for(long long i = 3; i <= quotient; i+=2) {
         if (isPrime(i)) {
             while(quotient%i == 0) {
                 //cout << "Dividing by " << i << endl;
