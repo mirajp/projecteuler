@@ -1,4 +1,4 @@
-all: p1.out p2.out p3.out p4.out p5.out p6.out p7.out
+all: p1.out p2.out p3.out p4.out p5.out p6.out p7.out p8.out p9.out p10.out
 
 p1.out: p1.o
 	g++ p1.o -o p1.out
@@ -42,11 +42,29 @@ p6.out: p6.o
 p6.o: p6.cpp
 	g++ -c p6.cpp
 
-p7.out: p7.o ../lib/prime.o
-	g++ p7.o ../lib/prime.o -o p7.out
+p7.out: p7.o
+	g++ p7.o -o p7.out
 
 p7.o: p7.cpp
 	g++ -c p7.cpp
+
+p8.out: p8.o
+	g++ p8.o -o p8.out
+
+p8.o: p8.cpp
+	g++ -c p8.cpp
+
+p9.out: p9.o
+	g++ p9.o -o p9.out
+
+p9.o: p9.cpp
+	g++ -c p9.cpp
+
+p10.out: p10.o
+	g++ p10.o -o p10.out
+
+p10.o: p10.cpp
+	g++ -c p10.cpp
 
 clean:
 	rm *.out *.o

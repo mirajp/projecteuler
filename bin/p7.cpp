@@ -9,7 +9,6 @@ What is the 10 001st prime number?
 // Find one prime and eliminate all the multiples from list of numbers as possible numbers to check if its prime. Count number of primes along the way.
 
 #include <iostream>
-#include "../lib/prime.h"
 
 #define MAX 200000
 
