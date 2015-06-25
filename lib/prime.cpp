@@ -42,3 +42,25 @@ std::vector<long> primeFactors(long long n) {
     return factors;
 }
 
+std::vector<int> getFactors(int n) {
+    std::vector<int> factors;
+    factors.push_back(1);
+    if (n == 1)
+        return factors;
+    
+    for (int i = 2; i < pow(n, 0.5); i++) {
+        if (n%i == 0) {
+            factors.push_back(i);
+            factors.push_back(n/i);
+        }
+    }
+
+    int sqroot = pow(n, 0.5);
+    if (n/sqroot == sqroot)
+        factors.push_back(sqroot);
+    
+    factors.push_back(n);
+
+    return factors;
+}
+
