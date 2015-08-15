@@ -1,4 +1,4 @@
-all: p1.out p2.out p3.out p4.out p5.out p6.out p7.out p8.out p9.out p10.out p11.out p12.out p13.out
+all: p1.out p2.out p3.out p4.out p5.out p6.out p7.out p8.out p9.out p10.out p11.out p12.out p13.out p14.out
 
 p1.out: p1.o
 	g++ p1.o -o p1.out
@@ -83,6 +83,12 @@ p13.out: p13.o
 
 p13.o: p13.cpp
 	g++ -c p13.cpp
+
+p14.out: p14.o
+	g++ p14.o -o p14.out
+
+p14.o: p14.cpp
+	g++ -c p14.cpp
 
 clean:
 	rm *.out *.o
