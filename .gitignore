@@ -1,3 +1,4 @@
-bin/*.out
-bin/*.o
+src/*.out
+src/*.exe
+src/*.o
 lib/*.o
