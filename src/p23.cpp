@@ -9,7 +9,7 @@ As 12 is the smallest abundant number, 1 + 2 + 3 + 4 + 6 = 16, the smallest numb
  
 Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
 */
- 
+
 #include <iostream>
 #include <vector>
  
@@ -17,7 +17,7 @@ Find the sum of all the positive integers which cannot be written as the sum of 
 //#define UPPERBOUND 100
  
 // 1 = it is sum of 2 abundant numbers
-int isSumOfAbundants[UPPERBOUND+1];
+//int isSumOfAbundants[UPPERBOUND+1];
  
 unsigned int sumOfDivisors(int n) {
     unsigned int sum = 0;
@@ -29,60 +29,31 @@ unsigned int sumOfDivisors(int n) {
 }
  
 using namespace std;
- 
+
+bool isSumOfAbundants[UPPERBOUND+1];
+
 int main() {
     vector<int> abundantNumbers;
-    unsigned int sum = 0;
-    int minAbundantNumber = 12;
-       
-    for (int i = 1; i < minAbundantNumber; i++) {
-        //cout << "Adding " << i << " as not a sum of 2 abundant numbers" << endl;
-        sum += i;
+    int sum = 0;
+    for (int i = 12; i <= UPPERBOUND; i++) {
+        if (sumOfDivisors(i) > i)
+            abundantNumbers.push_back(i);
     }
     
-    /* to speed up, can add doubles of the number found as the sum of abundant numbers
-    s(d) = x > d,
-    s(2*d) >= x + d
-    then s(2*d) > 2*d, 2*d is an abundant number that can be written as a sum of 2 abundant numbers
-    */
-    for (int i = minAbundantNumber; i <= UPPERBOUND; i++) {
-        if (isSumOfAbundants[i] < 1) {
-            // Upon reaching the value i+1, can conclude it is not the sum of 2 abundant numbers
-            //cout << "Adding " << i << " as not a sum of 2 abundant numbers" << endl;
-            sum += i;
-               
-            if (sumOfDivisors(i) > i) {
-                //cout << i << " is an abundant number" << endl;
-                abundantNumbers.push_back(i);
-                for (int j = 0; j < abundantNumbers.size(); j++) {
-                    int otherAbundantNumber = abundantNumbers[j];
-                    if (otherAbundantNumber+i <= UPPERBOUND) {
-                        if (isSumOfAbundants[otherAbundantNumber+i] == 0) {
-                            abundantNumbers.push_back(otherAbundantNumber+i);
-                            isSumOfAbundants[otherAbundantNumber+i] = 1;
-                        }
-                    }
-                }
-                for (int m = 2; ; m++) {
-                    // all multiples of the abundant number are sums of abundant numbers
-                    int otherAbundantNumber = m*i;
-                    if (otherAbundantNumber <= UPPERBOUND) {
-                        if (isSumOfAbundants[otherAbundantNumber] == 0) {
-                            abundantNumbers.push_back(otherAbundantNumber);
-                            isSumOfAbundants[otherAbundantNumber] = 1;
-                        }
-                    }
-                    else
-                        break;
-                }
-            }
+    for (int i = 0; i < abundantNumbers.size(); i++) {
+        for (int j = i; j < abundantNumbers.size(); j++) {
+            int sumOfAbundantNumbers = abundantNumbers[i] + abundantNumbers[j];
+            if (sumOfAbundantNumbers <= UPPERBOUND)
+                isSumOfAbundants[sumOfAbundantNumbers] = true;
         }
     }
-    cout << "Number of abundantNumbers = " << abundantNumbers.size() << ", last one = " << abundantNumbers[abundantNumbers.size()-1] << endl;
-    cout << "Sum of positive integers that aren't the sum of 2 abundant numbers = " << sum << endl;
-    // not 197082603
-    // not 153258423
-    // 235551
+    
+    for (int i = 1; i <= UPPERBOUND; i++) {
+        if (!isSumOfAbundants[i])
+            sum += i;
+    }
+    
+    cout << "Sum of numbers that are not a sum of 2 abundantNumbers = " << sum << endl;
+    
     return 0;
 }
-
