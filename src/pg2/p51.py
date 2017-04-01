@@ -12,6 +12,7 @@ import itertools
 
 def eratosthenes(n, primes):
     lastPrime = 2
+    primes[lastPrime] = True
     nonprimes = set()
     for j in xrange(lastPrime*lastPrime, n+1, lastPrime):
         nonprimes.add(j)

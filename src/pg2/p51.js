@@ -10,6 +10,7 @@ Find the smallest prime which, by replacing part of the number (not necessarily 
 
 function eratosthenes(n, primes) {
     var lastPrime = 2;
+    primes[lastPrime] = true;
     var nonprimes = new Set();
     for (var j = lastPrime*lastPrime; j < n+1; j += lastPrime)
         nonprimes.add(j);
